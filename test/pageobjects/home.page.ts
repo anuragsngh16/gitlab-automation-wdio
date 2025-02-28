@@ -3,15 +3,15 @@ import Page from './page';
 
 class HomePage extends Page {
 
-    public get homePageWelcomeMessage() {
+    get homePageWelcomeMessage() {
         return $('h1[data-testid="welcome-title-content"]');
     }
 
-    public get breadcrumbPath() {
+    get breadcrumbPath() {
         return $('//span[normalize-space()="Projects"]');
     }
 
-    public get createProjectButton() {
+    get createProjectButton() {
         return $('a[data-testid="new-project-button"]');
     }
 }

@@ -3,15 +3,15 @@ import Page from './page';
 
 class LoginPage extends Page {
     
-    public get inputUsername () {
+    get inputUsername () {
         return $('#user_login');
     }
 
-    public get inputPassword () {
+    get inputPassword () {
         return $('#user_password');
     }
 
-    public get btnSignIn () {
+    get btnSignIn () {
         return $('button[data-testid="sign-in-button"]');
     }
 

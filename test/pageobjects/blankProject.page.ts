@@ -3,32 +3,32 @@ import Page from './page';
 
 class BlankProject extends Page {
 
-    public get breadcrumbPath() {
+    get breadcrumbPath() {
         return $('//span[normalize-space()="Create blank project"]');
     }
     
-    public get createBlankProjectPageHeading(){
+    get createBlankProjectPageHeading(){
         return $('//h1[normalize-space()="Create blank project"]');
     }
 
-    public get projectNameInput() {
+    get projectNameInput() {
         return $('#project_name');
     }
 
-    public get projectPathInput(){
+    get projectPathInput(){
         return $('#project_path');
     }
 
-    public get createProjectButton(){
+    get createProjectButton(){
         return $('//span[normalize-space()="Create project"]');
     }
 
-    public get project(){
+    get project(){
         return $('h1[data-testid="project-name-content"]');
     }
     
-    public inputProjectName(projectName: string) {
-        return this.projectNameInput.setValue(projectName);
+    public async inputProjectName(projectName: string) {
+        await this.projectNameInput.setValue(projectName);
     }
 
     public async clickCreateBlankProjectButton(){

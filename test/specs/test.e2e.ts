@@ -83,4 +83,6 @@ describe('Create a blank project', () => {
         await BlankProject.project.waitForDisplayed();
         await expect(BlankProject.project).toHaveText(BlankProjectData.projectName);
     });
+
+    
 });
