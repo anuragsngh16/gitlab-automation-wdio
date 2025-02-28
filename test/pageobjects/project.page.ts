@@ -6,19 +6,45 @@ class ProjectPage extends Page {
         return $('#menu-section-button-manage');
     }
 
-    get labelLink(){
+    get labelSubMenu(){
         return $('a[aria-label="Labels"]');
     }
 
-    public async hoverOverManageButton(){
-        await this.manageButton.moveTo();
+    public async clickManageMenu(){
+        await this.manageButton.waitForDisplayed();
+        await this.manageButton.click();
     }
 
     public async clickLabelLink(){
-        await this.labelLink.waitForDisplayed();
-        await this.labelLink.click();
+        await this.labelSubMenu.waitForDisplayed();
+        await this.labelSubMenu.click();
     }
 
+    get planMenu(){
+        return $('#menu-section-button-plan');
+    }
+
+    get issuesLink(){
+        return $('a[aria-label="Issues"]');
+    }
+
+    get issueBaordSubMenu(){
+        return $('a[data-qa-submenu-item="Issue boards"]');
+    }
+
+    public async clickPlanMenu(){
+        await this.planMenu.click();
+    }
+
+    public async clickIssuesLink(){
+        await this.issuesLink.waitForDisplayed();
+        await this.issuesLink.click();
+    }
+
+    public async clickIssueBoardSubMenu(){
+        await this.issueBaordSubMenu.waitForDisplayed();
+        await this.issueBaordSubMenu.click();
+    }
 }
 
 export default new ProjectPage();

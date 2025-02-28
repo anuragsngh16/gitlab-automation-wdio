@@ -2,73 +2,104 @@ import { $ } from '@wdio/globals'
 import Page from './page';
 
 class LabelsPage extends Page {
-    get labelPageTitle(){
-        return $('h1.gl-text-size-h-display');
-    }
+  get labelPageDescription() {
+    return $("h1.gl-text-size-h-display");
+  }
 
-    public async getLabelPageTitle(){
-        await this.labelPageTitle.waitForDisplayed();
-        return this.labelPageTitle.getText();
-    }
+  public async getLabelPageDescription() {
+    await this.labelPageDescription.waitForDisplayed();
+    return this.labelPageDescription.getText();
+  }
 
-    get newLabelLink(){
-        return $('#new_label_link');
-    }
+  get newLabelLink() {
+    return $("#new_label_link");
+  }
 
-    public async clickNewLabelLink(){
-        await this.newLabelLink.waitForDisplayed();
-        await this.newLabelLink.click();
-    }
+  public async clickNewLabelLink() {
+    await this.newLabelLink.waitForDisplayed();
+    await this.newLabelLink.click();
+  }
 
-    get labelTitleInput(){
-        return $('#label_title');
-    }
+  get newLabelButton() {
+    return $('a[data-testid="create-new-label-button"]');
+  }
 
-    public async inputLabelTitle(labelTitle: string){
-        await this.labelTitleInput.setValue(labelTitle);
-    }
+  public async clickNewLabelButton() {
+    await this.newLabelButton.waitForDisplayed();
+    await this.newLabelButton.click();
+  }
+  get labelTitleInput() {
+    return $("#label_title");
+  }
 
-    get labelDescriptionInput(){
-        return $('#label_description');
-    }
+  public async inputLabelTitle(labelTitle: string) {
+    await this.labelTitleInput.setValue(labelTitle);
+  }
 
-    public async inputLabelDescription(labelDescription: string){      
-        await this.labelDescriptionInput.setValue(labelDescription);
-    }
+  get labelDescriptionInput() {
+    return $("#label_description");
+  }
 
-    get createLabelButton(){
-        return $('//button/span[normalize-space()="Create label"]');
-    }
+  public async inputLabelDescription(labelDescription: string) {
+    await this.labelDescriptionInput.setValue(labelDescription);
+  }
 
-    public async clickCreateLabelButton(){
-        await this.createLabelButton.waitForDisplayed();
-        await this.createLabelButton.click();
-    }
+  get createLabelButton() {
+    return $('//button/span[normalize-space()="Create label"]');
+  }
 
-    get labelNamePostCreation(){
-        return $('.js-other-labels .js-label-list-item .gl-label-text[data-container="body"]');
-    }
+  public async clickCreateLabelButton() {
+    await this.createLabelButton.waitForDisplayed();
+    await this.createLabelButton.click();
+  }
 
-    public async getLabelNamePostCreation(){
-        await this.labelNamePostCreation.waitForDisplayed();
-        return this.labelNamePostCreation.getText();
-    }
+  public async createNewLabel(labelTitle: string, labelDescription: string) {
+    await this.inputLabelTitle(labelTitle);
+    await this.inputLabelDescription(labelDescription);
+    await this.clickCreateLabelButton();
+  }
+  get labelNamePostCreation() {
+    return $(
+      '.js-other-labels .js-label-list-item .gl-label-text[data-container="body"]'
+    );
+  }
 
-    get labelSearch(){
-        return $('label-search');
-    }
+  public async getLabelNamePostCreation() {
+    await this.labelNamePostCreation.waitForDisplayed();
+    return this.labelNamePostCreation.getText();
+  }
 
-    public async inputLabelNameInSearchBox(labelName: string){
-        await this.labelSearch.setValue(labelName);
-    }
+  get labelSearch() {
+    return $("#label-search");
+  }
 
-    get searchLabelButton(){
-        return $('button[aria-label="Submit search"]');
-    }
+  public async inputLabelNameInSearchBox(labelName: string) {
+    await this.labelSearch.setValue(labelName);
+  }
 
-    public async clickSearchLabelButton(){
-        await this.searchLabelButton.click();
-    }
+  get searchLabelButton() {
+    return $('button[aria-label="Submit search"]');
+  }
+
+  public async clickSearchLabelButton() {
+    await this.searchLabelButton.click();
+  }
+
+  public async searchLabel(labelName: string) {
+    await this.labelSearch.waitForClickable();
+    await this.labelSearch.clearValue();
+    await this.inputLabelNameInSearchBox(labelName);
+    await this.clickSearchLabelButton();
+  }
+
+  get noLabelFound() {
+    return $("div.other-labels > div");
+  }
+
+  public async getNoLabelFound() {
+    await this.noLabelFound.waitForDisplayed({timeout: 5000});
+    return  await this.noLabelFound.getText();
+  }
 }
 
 
