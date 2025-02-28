@@ -1,0 +1,5 @@
+{
+    "username" : "you@example.com",
+    "password" : "yourPassword",
+    "loginPageTitle" : "Sign in · GitLab"
+}

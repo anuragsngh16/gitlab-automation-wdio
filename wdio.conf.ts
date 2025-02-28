@@ -55,12 +55,8 @@ export const config: WebdriverIO.Config = {
         browserName: 'chrome',
         'goog:chromeOptions': {
                 args: ['--disable-web-security', '--disable-site-isolation-trials']
-            }
-    }, {
-        browserName: 'firefox'
-    }, {
-        browserName: 'MicrosoftEdge'
-    }],
+            }}
+        ],
 
     //
     // ===================
