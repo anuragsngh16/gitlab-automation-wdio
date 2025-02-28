@@ -49,26 +49,38 @@ describe('Create a project', () => {
         await CreateProjectPage.breadcrumbPath.waitForDisplayed();
         await expect(CreateProjectPage.breadcrumbPath).toHaveText(CreateProjectData.breadcrumbPath);
     });
+
     it('Verify different options displayed for project creation', async () => {
 
     });
 });
 
-describe('Create new project', () => {
+describe('Create a blank project', () => {
     it('Click on the create blank project button', async () => {
         await CreateProject.createBlankProjectButton.waitForDisplayed();
         await CreateProject.createBlankProjectButton.click();
     });
 
-    it('Create a blank project', async () =>{
+    it('Verify the welcome message on the create new project page', async () => {
         await BlankProject.createBlankProjectPageHeading.waitForDisplayed();
         await expect(BlankProject.createBlankProjectPageHeading).toHaveText(BlankProjectData.createBlankProjectPageHeading);
+    });
 
+    it('Create a blank project', async () =>{
         await BlankProject.projectNameInput.waitForDisplayed();
         await BlankProject.inputProjectName(BlankProjectData.projectName);
 
-        await expect(BlankProject.projectName).toHaveText(BlankProjectData.projectName);
+        const projectName: string = await (await BlankProject.projectNameInput).getValue();
+        await expect(projectName).toBe(BlankProjectData.projectName);
         
-        await expect(BlankProject.projectPath1).toHaveText(BlankProjectData.projectName);
+        const projectPath: string = await (await BlankProject.projectPathInput).getValue();
+        await expect(projectPath).toBe(BlankProjectData.projectPath);
+        
+        await BlankProject.clickCreateBlankProjectButton();
+    });
+
+    it('Verify the project is created successfully', async () => {
+        await BlankProject.project.waitForDisplayed();
+        await expect(BlankProject.project).toHaveText(BlankProjectData.projectName);
     });
 });
