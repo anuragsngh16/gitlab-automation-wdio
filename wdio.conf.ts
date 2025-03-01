@@ -57,7 +57,6 @@ export const config: WebdriverIO.Config = {
                 args: ['--disable-web-security', '--disable-site-isolation-trials']
             }}
         ],
-
     //
     // ===================
     // Test Configurations
