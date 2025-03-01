@@ -54,7 +54,10 @@ export const config: WebdriverIO.Config = {
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
-                args: ['--disable-web-security', '--disable-site-isolation-trials']
+                args: ['--disable-web-security', '--disable-site-isolation-trials'],
+                prefs: {
+                    'profile.default_content_setting_values.clipboard': 1 // 1 = Allow, 2 = Block
+                }
             }}
         ],
     //
