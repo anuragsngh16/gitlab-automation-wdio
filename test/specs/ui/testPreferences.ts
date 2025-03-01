@@ -23,12 +23,26 @@ export function testSettingPreferencesFunctionality() {
     });
 
     it("Select and verify Dark Mode", async () => {
+      await browser.waitUntil(
+        async () => (await browser.execute(() => document.readyState)) === "complete",
+        {
+          timeout: 10000,
+          timeoutMsg: "Page did not load within the expected time",
+        }
+      );
       await Preference.clickDarkMode();
       await browser.pause(2000);
       expect(await Preference.isDarkMode()).toBe(false);
     });
 
     it("Select and verify Light Mode", async () => {
+      await browser.waitUntil(
+        async () => (await browser.execute(() => document.readyState)) === "complete",
+        {
+          timeout: 10000,
+          timeoutMsg: "Page did not load within the expected time",
+        }
+      );
       await Preference.clickLightMode();
       await browser.pause(2000);
       expect(await Preference.isLightMode()).toBe(true);
