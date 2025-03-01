@@ -2,6 +2,7 @@ import { $ } from "@wdio/globals";
 import Page from "./page";
 import * as fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 
 class BlankProject extends Page {
   get breadcrumbPath() {
@@ -67,6 +68,8 @@ class BlankProject extends Page {
   }
 
   public writeDataToFile(key: string, value: string, fileloacation: string) {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     const filePath = path.join(__dirname, fileloacation);
     const absolutePath = path.resolve(filePath)
     const data = fs.readFileSync(absolutePath, "utf-8");
