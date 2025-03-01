@@ -1,6 +1,7 @@
 {
-    "createBlankProjectPageHeading" : "Create blank project",
-    "breadcrumbPath" : "Create blank project",
-    "projectName" : "Test Project",
-    "projectPath" : "test-project"
+  "createBlankProjectPageHeading": "Create blank project",
+  "breadcrumbPath": "Create blank project",
+  "projectName": "Test Project",
+  "projectPath": "test-project",
+  "projectId": "67589208"
 }
