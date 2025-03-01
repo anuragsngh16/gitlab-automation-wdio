@@ -10,7 +10,7 @@ export default class Page {
         const cookies = [
             { 
                 name: 'cf_clearance', 
-                value: 'Jp4wQ88YYUhevW9Ksvvfr8EhbykDr5D.rGOhFq2jq2I-1740726380-1.2.1.1-E8Cgaa.QPAwT71Hyp_JyVsLkoerixLaDjwG1B7KLc1L3YMt4sGvx.2vP65QoHViRrLtIGE4n1921q4HctdaTvV_Z8b1ROSWGi7_9425FQ.788xeugYgpEh3ComcPjdSgi7kaedyW6PsqU7KcZlZIk3Pnsm6I8qkCWkk4HXMdIaURop4LRYd0znE_vi0TNH.vvN5HFt2BVFLSxECP2R_IkmdVOWH2QzT17_Z5Iq5ChEyF0FUjV6hwD0rqt9K3P2dz5NkNPkBE_Po8I8J6nK20jOj4eHhINsXJnegCbQJwi0VN_qhvbKsuVlKq7CVm51TMnvHYUpE8Q7Yh_1ehYz9grw', 
+                value: 'cdHoYWHpL.cN.lKkjkAvS7EwBss2Y5PwQu0ERfBHp6I-1740833743-1.2.1.1-kFs0MWDgyNjU3QSFRKpoCRYwEWPsiymifKeuUgZUQY.boXLkE._tWJeo5cG.seryc7JTIvoYPkvqURZ6473tewt_ZPRVztJJfwkI_0r8tJbQoNxcDRYyGxJNyZnoQzpIiVumy7VVG_JgjYghI9fFfPvK3eMkROY3QuNgNzSl.AvO8I.Lw0pYhE277rPrudEFLqDS8eX4vIsU_L.P6WNZ31WC83r_NruQaSGzOhEvWayByVct9h9Awb5siKl4b9EwWNpoPx02UIzp2ovhfP2joelunQ2zQBjuiHPhWg1itqxUo2hrZOO.8ew9Ai0cLV4WRMXGI7KPflMmuFnnQkHTEMFLAaHCpLtK3X1Q5KbcSpkkVBSMVrfvdYwD4zU5mRbmV26nP6d3wRzuFYf8Num9pKKuMyepYojFnlfNzbQuG.XUOd3XP2oCK9rzyGfOD4kCBK59zjH77KAz0.yaplybqw', 
                 domain: '.gitlab.com' 
             }
         ];

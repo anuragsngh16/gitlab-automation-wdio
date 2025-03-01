@@ -91,16 +91,6 @@ class LabelsPage extends Page {
     await this.inputLabelNameInSearchBox(labelName);
     await this.clickSearchLabelButton();
   }
-
-  get noLabelFound() {
-    return $("div.other-labels > div");
-  }
-
-  public async getNoLabelFound() {
-    await this.noLabelFound.waitForDisplayed({timeout: 5000});
-    return  await this.noLabelFound.getText();
-  }
 }
-
 
 export default new LabelsPage();
