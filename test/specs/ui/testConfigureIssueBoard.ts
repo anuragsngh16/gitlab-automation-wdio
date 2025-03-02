@@ -6,12 +6,14 @@ import IssueBoard from "../../pageobjects/issueBoard.page";
 export function testConfigureIssueBaordFunctionality() {
   describe("Configure Issue board", () => {
     it("Issue board page is opened when the Issue baord link is clicked", async () => {
+      await ProjectPage.waitForPageLoad();
       await ProjectPage.clickPlanMenu();
       await ProjectPage.clickIssueBoardSubMenu();
       await expect(IssueBoard.newListButton).toBeDisplayed();
     });
 
     it("Add a lable to the issue board ", async () => {
+      await IssueBoard.waitForPageLoad();
       await IssueBoard.clickNewListButton();
       await browser.pause(1000);
       await IssueBoard.clickSelectALabelButton();
@@ -20,6 +22,7 @@ export function testConfigureIssueBaordFunctionality() {
     });
 
     it("Add another lable to the issue board ", async () => {
+      await IssueBoard.waitForPageLoad();
       await IssueBoard.clickNewListButton();
       await browser.pause(1000);
       await IssueBoard.clickSelectALabelButton();
@@ -28,7 +31,7 @@ export function testConfigureIssueBaordFunctionality() {
     });
 
     it("Change the position of baords by drag and drop", async () => {
-      await browser.pause(2000);
+      await IssueBoard.waitForPageLoad();
       await IssueBoard.dragAndDropBoards();
     });
   });

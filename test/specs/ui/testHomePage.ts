@@ -5,6 +5,7 @@ import HomePageData from "../../test-data/homepage-data.json";
 export function testHomePageFunctionality() {
   describe("GitLab Homepage", () => {
     it("Verify the welcome message idisplayed on the homepage on successful login", async () => {
+      await HomePage.waitForPageLoad();
       await HomePage.homePageWelcomeMessage.waitForDisplayed();
       await expect(HomePage.homePageWelcomeMessage).toHaveText(
         HomePageData.welcomeMessage

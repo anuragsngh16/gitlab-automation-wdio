@@ -6,6 +6,7 @@ import BlankProjectData from "../../test-data/blankProject-data.json";
 export function testBlankProjectCreationFunctionality() {
   describe("Create a blank project", () => {
     it("Click on the create blank project button", async () => {
+      await CreateProject.waitForPageLoad();
       await CreateProject.createBlankProjectButton.waitForDisplayed();
       await CreateProject.createBlankProjectButton.click();
     });
@@ -18,6 +19,7 @@ export function testBlankProjectCreationFunctionality() {
     });
 
     it("Create a blank project", async () => {
+      await CreateProject.waitForPageLoad();
       await BlankProject.projectNameInput.waitForDisplayed();
       await BlankProject.inputProjectName(BlankProjectData.projectName);
 
@@ -30,6 +32,7 @@ export function testBlankProjectCreationFunctionality() {
     });
 
     it('Validate the project is created successfully', async () => {
+      await CreateProject.waitForPageLoad();
       const expectedMessage = `Project '${BlankProjectData.projectName}' was successfully created.`;
       const toastMessage =  await browser.execute(() => {
         return (document.querySelector("#content-body div.gl-alert-body") as HTMLElement)?.innerText?.trim();
@@ -39,7 +42,7 @@ export function testBlankProjectCreationFunctionality() {
     });
 
     it("Extract projet id & store in the json file", async () => {
-      await browser.pause(2000);
+      await CreateProject.waitForPageLoad();
       await BlankProject.clickMoreActionIcon();
       await BlankProject.clickCopyProjectId();
 

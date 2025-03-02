@@ -1,14 +1,16 @@
-import { expect, browser } from "@wdio/globals";
+import { expect } from "@wdio/globals";
 import Preference from "../../pageobjects/preference.page";
 
 export function testSettingPreferencesFunctionality() {
   describe("Preferences", () => {
     it("Click user avatar", async () => {
+      await Preference.waitForPageLoad();
       await Preference.clickUserAvatar();
       await Preference.preferencesSubmenu.waitForDisplayed();
     });
 
     it("Click Preferences", async () => {
+      await Preference.waitForPageLoad();
       await Preference.clickPreferencesSubmenu();
     });
 
@@ -23,29 +25,39 @@ export function testSettingPreferencesFunctionality() {
     });
 
     it("Select and verify Dark Mode", async () => {
-      await browser.waitUntil(
-        async () => (await browser.execute(() => document.readyState)) === "complete",
-        {
-          timeout: 10000,
-          timeoutMsg: "Page did not load within the expected time",
-        }
-      );
-      await Preference.clickDarkMode();
+      await Preference.waitForPageLoad();
       await browser.pause(2000);
+      await Preference.clickDarkMode();
+      await Preference.waitForPageLoad();
       expect(await Preference.isDarkMode()).toBe(false);
     });
 
     it("Select and verify Light Mode", async () => {
-      await browser.waitUntil(
-        async () => (await browser.execute(() => document.readyState)) === "complete",
-        {
-          timeout: 10000,
-          timeoutMsg: "Page did not load within the expected time",
-        }
-      );
-      await Preference.clickLightMode();
+      await Preference.waitForPageLoad();
       await browser.pause(2000);
+      await Preference.clickLightMode();
+      await Preference.waitForPageLoad();
       expect(await Preference.isLightMode()).toBe(true);
+    });
+
+    it('Verify the default selected theme', async() => {
+      await Preference.waitForPageLoad();
+      expect(await Preference.themeApplied()).toContain("indigo");
+      expect(await Preference.getCurrentTheme()).toBe("Indigo");
+    });
+
+    it('Change the theme to Blue and verify', async() => {
+      await Preference.selectTheme("Blue");
+      await Preference.waitForPageLoad();
+      expect(await Preference.themeApplied()).toContain("blue");
+      expect(await Preference.getCurrentTheme()).toBe("Blue");
+    });
+
+    it('Switch to Indigo theme and verify', async() => {
+      await Preference.selectTheme("Indigo");
+      await Preference.waitForPageLoad();
+      expect(await Preference.themeApplied()).toContain("indigo");
+      expect(await Preference.getCurrentTheme()).toBe("Indigo");
     });
   });
 }

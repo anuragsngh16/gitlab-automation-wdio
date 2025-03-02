@@ -6,14 +6,24 @@ import { browser } from '@wdio/globals'
 */
 export default class Page {
 
-    public async setGitlabCookies() {
+    public async setGitlabCookies(): Promise<void> {
         const cookies = [
             { 
                 name: 'cf_clearance', 
-                value: 'cdHoYWHpL.cN.lKkjkAvS7EwBss2Y5PwQu0ERfBHp6I-1740833743-1.2.1.1-kFs0MWDgyNjU3QSFRKpoCRYwEWPsiymifKeuUgZUQY.boXLkE._tWJeo5cG.seryc7JTIvoYPkvqURZ6473tewt_ZPRVztJJfwkI_0r8tJbQoNxcDRYyGxJNyZnoQzpIiVumy7VVG_JgjYghI9fFfPvK3eMkROY3QuNgNzSl.AvO8I.Lw0pYhE277rPrudEFLqDS8eX4vIsU_L.P6WNZ31WC83r_NruQaSGzOhEvWayByVct9h9Awb5siKl4b9EwWNpoPx02UIzp2ovhfP2joelunQ2zQBjuiHPhWg1itqxUo2hrZOO.8ew9Ai0cLV4WRMXGI7KPflMmuFnnQkHTEMFLAaHCpLtK3X1Q5KbcSpkkVBSMVrfvdYwD4zU5mRbmV26nP6d3wRzuFYf8Num9pKKuMyepYojFnlfNzbQuG.XUOd3XP2oCK9rzyGfOD4kCBK59zjH77KAz0.yaplybqw', 
+                value: 'NnoYR1vsQ2Q2dYM.xpg8NxtVVv2A9EyERsztiVXjcKQ-1740917254-1.2.1.1-msgxJSWI.5k4OmzdOx3GuL1G7U8gEa2YE7r8uHFnVl5ack233ARyGE.V4np15L8TzFFtsutbvlsZZMYX9xpq1Epbb6c73BqoVTMg3MT8JGlP4NaJZ6Ubv49MGirTzaKGgzQ8y9A1WNFQGdRna8sB65_iVGb3N46BD.CKqBNDVIe1iCsRynhdl.o55ot9ahXMj9tiE3iCMWUM8v2WLb8Ak6yJmbRFMMg_meyy_Uax.LU8ePfn49DX7npw9Qfruj6fqzW0Qi8jc7nCuSKAGqhBp7c_36ZMAWZe0hvfClGEs7z8TfeYrkE1RtB5ngWedPAYkT.FD2a.qLYXKfdMZHT95H7k0VspHMiLVzMlezFSstSeChXqNc4I.l6UKVOFcRSUIjWqdmgRgrW5K4eDUfvAL.W8pm7TXnCbI3K7Dw1K5G0BTW2SkX9GZPrq5Mw1nqPZpS.s9QDudyV5V0muBxlFzw', 
                 domain: '.gitlab.com' 
             }
         ];
         await browser.setCookies(cookies);
+    }
+
+    public async waitForPageLoad(timeout: number = 10000): Promise<void> {
+        await browser.waitUntil(
+            async () => (await browser.execute(() => document.readyState)) === "complete",
+            {
+                timeout: timeout,
+                timeoutMsg: "Page did not load within the expected time",
+            }
+        );
     }
 }

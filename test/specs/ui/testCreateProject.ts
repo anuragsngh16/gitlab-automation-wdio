@@ -7,10 +7,12 @@ import CreateProjectPage from "../../pageobjects/createProject.page";
 export function testCreateProjectFunctionality() {
   describe("Create a project", () => {
     it("Click on the create project button", async () => {
+      await HomePage.waitForPageLoad();
       await HomePage.createProjectButton.click();
     });
 
     it("Verify the welcome message on the create project page", async () => {
+      await HomePage.waitForPageLoad();
       await CreateProject.createPageWelcomeMessage.waitForDisplayed();
       await expect(CreateProjectPage.createPageWelcomeMessage).toHaveText(
         CreateProjectData.createProjectPageWelcomeMessage
