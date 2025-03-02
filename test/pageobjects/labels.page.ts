@@ -2,53 +2,54 @@ import { $ } from '@wdio/globals'
 import Page from './page';
 
 class LabelsPage extends Page {
-  get labelPageDescription() {
+
+  get labelPageDescription(): ChainablePromiseElement {
     return $("h1.gl-text-size-h-display");
   }
 
-  public async getLabelPageDescription() {
+  public async getLabelPageDescription(): Promise<string> {
     await this.labelPageDescription.waitForDisplayed();
     return this.labelPageDescription.getText();
   }
 
-  get newLabelLink() {
+  get newLabelLink(): ChainablePromiseElement {
     return $("#new_label_link");
   }
 
-  public async clickNewLabelLink() {
+  public async clickNewLabelLink(): Promise<void> {
     await this.newLabelLink.waitForDisplayed();
     await this.newLabelLink.click();
   }
 
-  get newLabelButton() {
+  get newLabelButton(): ChainablePromiseElement {
     return $('a[data-testid="create-new-label-button"]');
   }
 
-  public async clickNewLabelButton() {
+  public async clickNewLabelButton(): Promise<void> {
     await this.newLabelButton.waitForDisplayed();
     await this.newLabelButton.click();
   }
-  get labelTitleInput() {
+  get labelTitleInput(): ChainablePromiseElement {
     return $("#label_title");
   }
 
-  public async inputLabelTitle(labelTitle: string) {
+  public async inputLabelTitle(labelTitle: string): Promise<void> {
     await this.labelTitleInput.setValue(labelTitle);
   }
 
-  get labelDescriptionInput() {
+  get labelDescriptionInput(): ChainablePromiseElement {
     return $("#label_description");
   }
 
-  public async inputLabelDescription(labelDescription: string) {
+  public async inputLabelDescription(labelDescription: string): Promise<void> {
     await this.labelDescriptionInput.setValue(labelDescription);
   }
 
-  get createLabelButton() {
+  get createLabelButton(): ChainablePromiseElement {
     return $('//button/span[normalize-space()="Create label"]');
   }
 
-  public async clickCreateLabelButton() {
+  public async clickCreateLabelButton(): Promise<void> {
     await this.createLabelButton.waitForDisplayed();
     await this.createLabelButton.click();
   }
@@ -58,34 +59,32 @@ class LabelsPage extends Page {
     await this.inputLabelDescription(labelDescription);
     await this.clickCreateLabelButton();
   }
-  get labelNamePostCreation() {
-    return $(
-      '.js-other-labels .js-label-list-item .gl-label-text[data-container="body"]'
-    );
+  get labelNamePostCreation(): ChainablePromiseElement {
+    return $('.js-other-labels .js-label-list-item .gl-label-text[data-container="body"]');
   }
 
-  public async getLabelNamePostCreation() {
+  public async getLabelNamePostCreation(): Promise<any> {
     await this.labelNamePostCreation.waitForDisplayed();
     return this.labelNamePostCreation.getText();
   }
 
-  get labelSearch() {
+  get labelSearch(): ChainablePromiseElement {
     return $("#label-search");
   }
 
-  public async inputLabelNameInSearchBox(labelName: string) {
+  public async inputLabelNameInSearchBox(labelName: string): Promise<void> {
     await this.labelSearch.setValue(labelName);
   }
 
-  get searchLabelButton() {
+  get searchLabelButton(): ChainablePromiseElement {
     return $('button[aria-label="Submit search"]');
   }
 
-  public async clickSearchLabelButton() {
+  public async clickSearchLabelButton(): Promise<void> {
     await this.searchLabelButton.click();
   }
 
-  public async searchLabel(labelName: string) {
+  public async searchLabel(labelName: string): Promise<void> {
     await this.labelSearch.waitForClickable();
     await this.labelSearch.clearValue();
     await this.inputLabelNameInSearchBox(labelName);

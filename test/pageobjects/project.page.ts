@@ -2,46 +2,47 @@ import { $ } from '@wdio/globals'
 import Page from './page';
 
 class ProjectPage extends Page {
-    get manageButton(){
+    
+    get manageButton(): ChainablePromiseElement {
         return $('#menu-section-button-manage');
     }
 
-    get labelSubMenu(){
+    get labelSubMenu(): ChainablePromiseElement {
         return $('a[aria-label="Labels"]');
     }
 
-    public async clickManageMenu(){
+    public async clickManageMenu(): Promise<void> {
         await this.manageButton.waitForDisplayed();
         await this.manageButton.click();
     }
 
-    public async clickLabelLink(){
+    public async clickLabelLink(): Promise<void> {
         await this.labelSubMenu.waitForDisplayed();
         await this.labelSubMenu.click();
     }
 
-    get planMenu(){
+    get planMenu(): ChainablePromiseElement {
         return $('#menu-section-button-plan');
     }
 
-    get issuesLink(){
+    get issuesLink(): ChainablePromiseElement {
         return $('a[aria-label="Issues"]');
     }
 
-    get issueBaordSubMenu(){
+    get issueBaordSubMenu(): ChainablePromiseElement {
         return $('a[data-qa-submenu-item="Issue boards"]');
     }
 
-    public async clickPlanMenu(){
+    public async clickPlanMenu(): Promise<void> {
         await this.planMenu.click();
     }
 
-    public async clickIssuesLink(){
+    public async clickIssuesLink(): Promise<void> {
         await this.issuesLink.waitForDisplayed();
         await this.issuesLink.click();
     }
 
-    public async clickIssueBoardSubMenu(){
+    public async clickIssueBoardSubMenu(): Promise<void>{
         await this.issueBaordSubMenu.waitForDisplayed();
         await this.issueBaordSubMenu.click();
     }

@@ -2,75 +2,74 @@ import { $ } from '@wdio/globals'
 import Page from './page';
 
 class IssuesPage extends Page {
-    get issuesPageDescription(){
+    get issuesPageDescription(): ChainablePromiseElement {
         return $('h1.gl-text-size-h-display');
     }
 
-    public async getIssuesPageDescription(){
+    public async getIssuesPageDescription(): Promise<any> {
         await this.issuesPageDescription.waitForDisplayed();
         return this.issuesPageDescription.getText();
     }
 
-    get newIssueLink(){
+    get newIssueLink(): ChainablePromiseElement {
         return $('//a[@data-track-action="click_new_issue_project_issues_empty_list_page"]');
     }
 
-    public async clickNewIssueLink(){
+    public async clickNewIssueLink(): Promise<void> {
         await this.newIssueLink.waitForDisplayed();
         await this.newIssueLink.click();
     }
 
-    get newIssuePageTitle(){
+    get newIssuePageTitle(): ChainablePromiseElement {
         return $('h1.page-title');
     }
 
-    public async getNewIssuePageTitle(){
+    public async getNewIssuePageTitle(): Promise<any> {
         await this.newIssuePageTitle.waitForDisplayed();
         return this.newIssuePageTitle.getText();
     }
 
-    get issuesTitleInput(){
+    get issuesTitleInput(): ChainablePromiseElement {
         return $('#issue_title');
     }
 
-    public async inputIssuesTitle(labelTitle: string){
+    public async inputIssuesTitle(labelTitle: string): Promise<void> {
         await this.issuesTitleInput.setValue(labelTitle);
     }
 
-    get issuesDescriptionInput(){
+    get issuesDescriptionInput(): ChainablePromiseElement {
         return $('#issue_description');
     }
 
-    public async issuesLabelDescription(labelDescription: string){      
+    public async issuesLabelDescription(labelDescription: string): Promise<void> {      
         await this.issuesDescriptionInput.setValue(labelDescription);
     }
 
-    get assigneeDropdown(){
+    get assigneeDropdown(): ChainablePromiseElement {
         return $('button.js-assignee-search');    
     }
 
-    public async clickAssigneeDropdown(){
+    public async clickAssigneeDropdown(): Promise<void> {
         await this.assigneeDropdown.click();
     }
 
-    get assignedToMeLink(){
+    get assignedToMeLink(): ChainablePromiseElement {
         return $('a.assign-to-me-link');
     }
 
-    public async clickAssignedToMeLink(){
+    public async clickAssignedToMeLink(): Promise<void> {
         await this.assignedToMeLink.waitForDisplayed();
         await this.assignedToMeLink.click();
     }
 
-    get createIssue(){
+    get createIssue(): ChainablePromiseElement {
         return $('button[data-track-label="submit_mr"]');
     }
 
-    public async clickCreateIssue(){
+    public async clickCreateIssue(): Promise<void> {
         await this.createIssue.waitForDisplayed();
         await this.createIssue.click();
     }
 }
-
 
 export default new IssuesPage();

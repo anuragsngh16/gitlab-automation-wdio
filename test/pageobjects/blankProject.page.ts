@@ -5,64 +5,64 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 class BlankProject extends Page {
-  get breadcrumbPath() {
+  get breadcrumbPath(): ChainablePromiseElement {
     return $('//span[normalize-space()="Create blank project"]');
   }
 
-  get createBlankProjectPageHeading() {
+  get createBlankProjectPageHeading(): ChainablePromiseElement {
     return $('//h1[normalize-space()="Create blank project"]');
   }
 
-  get projectNameInput() {
+  get projectNameInput(): ChainablePromiseElement {
     return $("#project_name");
   }
 
-  get projectPathInput() {
+  get projectPathInput(): ChainablePromiseElement {
     return $("#project_path");
   }
 
-  get createProjectButton() {
+  get createProjectButton(): ChainablePromiseElement {
     return $('//span[normalize-space()="Create project"]');
   }
 
-  get project() {
+  get project(): ChainablePromiseElement {
     return $('h1[data-testid="project-name-content"]');
   }
 
-  public async inputProjectName(projectName: string) {
+  public async inputProjectName(projectName: string): Promise<void> {
     await this.projectNameInput.setValue(projectName);
   }
 
-  public async clickCreateBlankProjectButton() {
+  public async clickCreateBlankProjectButton(): Promise<void> {
     await this.createProjectButton.waitForDisplayed();
     await this.createProjectButton.click();
   }
 
-  get toastMessage() {
+  get toastMessage(): ChainablePromiseElement {
     return $("#content-body div.gl-alert-body");
   }
 
-  public async getToastMessage() {
+  public async getToastMessage(): Promise<string> {
     await this.toastMessage.waitForDisplayed();
     return await browser.execute(() => {
       return (document.querySelector("#content-body div.gl-alert-body") as HTMLElement)?.innerText?.trim();
     });
   }
 
-  get moreActions() {
+  get moreActions(): ChainablePromiseElement {
     return $('button[aria-label="More actions"].gl-new-dropdown-icon-only');
   }
 
-  public async clickMoreActionIcon() {
+  public async clickMoreActionIcon(): Promise<void> {
     await this.moreActions.waitForDisplayed();
     await this.moreActions.click();
   }
 
-  get copyProjectId() {
+  get copyProjectId(): ChainablePromiseElement{
     return $('button[data-testid="copy-project-id"]');
   }
 
-  public async clickCopyProjectId() {
+  public async clickCopyProjectId(): Promise<void>{
     await this.copyProjectId.waitForDisplayed();
     await this.copyProjectId.click();
   }

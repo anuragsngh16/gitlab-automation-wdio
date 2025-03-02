@@ -2,29 +2,29 @@ import { $, $$ } from "@wdio/globals";
 import Page from "./page";
 
 class IssueBoard extends Page {
-  get newListButton() {
+  get newListButton(): ChainablePromiseElement {
     return $("#boards-create-list");
   }
 
-  public async clickNewListButton() {
+  public async clickNewListButton(): Promise<void> {
     await this.newListButton.waitForDisplayed();
     await this.newListButton.click();
   }
 
-  get selectALabelButton() {
+  get selectALabelButton(): ChainablePromiseElement {
     return $('//span[normalize-space()="Select a label"]');
   }
 
-  public async clickSelectALabelButton() {
+  public async clickSelectALabelButton(): Promise<void> {
     await this.selectALabelButton.waitForDisplayed();
     await this.selectALabelButton.click();
   }
 
-  get labelsList() {
+  get labelsList(): ChainablePromiseArray {
     return $$('//label[span[contains(@class, "dropdown-label-box")]]/div');
   }
 
-  public async selectLabel(labelName: string) {
+  public async selectLabel(labelName: string): Promise<void> {
     const allLabels = await this.labelsList;
     for (const label of allLabels) {
       const labelText = await label.getText();
@@ -35,27 +35,23 @@ class IssueBoard extends Page {
     }
   }
 
-  get addToBoard() {
+  get addToBoard(): ChainablePromiseElement {
     return $('button[data-testid="addNewColumnButton"]');
   }
 
-  public async clickAddToBoard() {
+  public async clickAddToBoard(): Promise<void> {
     await this.addToBoard.waitForDisplayed();
     await this.addToBoard.click();
   }
 
-  get dragableBoards() {
+  get dragableBoards(): ChainablePromiseArray {
     return $$("h3.gl-cursor-grab .board-title-text .gl-label-text");
   }
 
-  public async dragAndDropBoards() {
+  public async dragAndDropBoards(): Promise<void> {
     try {
-      const firstBoard = $(
-        '//header[.//span[@class="gl-label-text" and normalize-space()="In-progress"]]'
-      );
-      const secondBoard = $(
-        '//header[.//span[@class="gl-label-text" and normalize-space()="In-Test"]]'
-      );
+      const firstBoard = $('//header[.//span[@class="gl-label-text" and normalize-space()="In-progress"]]');
+      const secondBoard = $('//header[.//span[@class="gl-label-text" and normalize-space()="In-Test"]]');
       const firstBoardLocation = await firstBoard.getLocation();
       const secondBoardLocation = await secondBoard.getLocation();
       await browser.performActions([
