@@ -130,7 +130,9 @@ export const config: WebdriverIO.Config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    reporters: [
+        'spec',
+    ],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -210,6 +212,7 @@ export const config: WebdriverIO.Config = {
      * Function to be executed before a test (in Mocha/Jasmine) starts.
      */
     // beforeTest: function (test, context) {
+    //     console.log(`Starting test: ${test.fullName}`);
     // },
     /**
      * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
@@ -234,6 +237,7 @@ export const config: WebdriverIO.Config = {
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
     // afterTest: function(test, context, { error, result, duration, passed, retries }) {
+    //     console.log(`Finished executing test: ${test.fullName}`);
     // },
 
 
