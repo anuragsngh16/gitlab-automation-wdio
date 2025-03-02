@@ -44,6 +44,12 @@ export class ApiClient {
     return response;
   }
 
+  /**
+   * Sends a DELETE request to the specified endpoint.
+   *
+   * @param endpoint - The API endpoint to send the DELETE request to.
+   * @returns A promise that resolves to the Axios response.
+   */
   async delete(endpoint: string): Promise<AxiosResponse> {
     const config: AxiosRequestConfig = {
       headers: {
