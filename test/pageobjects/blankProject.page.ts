@@ -67,6 +67,13 @@ class BlankProject extends Page {
     await this.copyProjectId.click();
   }
 
+  /**
+ * Writes data to a JSON file at the specified location.
+ * 
+ * @param key - The key to update or add in the JSON file.
+ * @param value - The value to associate with the key.
+ * @param fileLocation - The relative path to the JSON file.
+ */
   public writeDataToFile(key: string, value: string, fileloacation: string) {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
