@@ -1,5 +1,6 @@
 import { $, $$ } from "@wdio/globals";
 import Page from "./page";
+import LabelsData from "../../test/test-data/labels-data.json";
 
 class IssueBoard extends Page {
   get newListButton(): ChainablePromiseElement {
@@ -50,28 +51,34 @@ class IssueBoard extends Page {
 
   public async dragAndDropBoards(): Promise<void> {
     try {
-      const firstBoard = $('//header[.//span[@class="gl-label-text" and normalize-space()="In-progress"]]');
-      const secondBoard = $('//header[.//span[@class="gl-label-text" and normalize-space()="In-Test"]]');
+      const firstBoard = $(`//div[contains(@class,"is-expandable")][.//header//span[@class="gl-label-text" and normalize-space()="${LabelsData.labelName[0]}"]]//ul`);
+      const secondBoard = $(`//div[contains(@class,"is-expandable")][.//header//span[@class="gl-label-text" and normalize-space()="${LabelsData.labelName[1]}"]]//ul`);
       const firstBoardLocation = await firstBoard.getLocation();
+      //console.log(firstBoardLocation.x)
+      //console.log(firstBoardLocation.y)
       const secondBoardLocation = await secondBoard.getLocation();
+      //console.log(secondBoardLocation.x)
+      //console.log(secondBoardLocation.y)
+      await firstBoard.scrollIntoView();
       await browser.performActions([
         {
           type: "pointer",
-          id: "pointer1",
+          id: "mouse",
           parameters: { pointerType: "mouse" },
           actions: [
             {
               type: "pointerMove",
-              duration: 0,
+              duration: 1000,
               x: firstBoardLocation.x,
               y: firstBoardLocation.y,
             },
             { type: "pointerDown", button: 0 },
+            { type: "pause", duration: 500 }, 
             {
               type: "pointerMove",
               duration: 5000,
-              x: secondBoardLocation.x,
-              y: secondBoardLocation.y,
+              x: secondBoardLocation.x+5,
+              y: secondBoardLocation.y+5,
             },
             { type: "pointerUp", button: 0 },
           ],
