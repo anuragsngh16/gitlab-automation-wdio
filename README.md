@@ -1,7 +1,7 @@
 
 # Gitlab Automation
 
-This repository contains an automated test framework built with WebdriverIO and TypeScript. It is designed for UI testing of web applications, ensuring reliability and maintainability in test execution.
+This repository contains an automated test framework built with WebdriverIO and TypeScript. It is designed for UI testing of web applications and the Api testing capable to send GET, POST, PUT & DELETE requests.
 
 
 ## Installation
