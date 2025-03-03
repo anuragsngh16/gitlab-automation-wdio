@@ -14,14 +14,15 @@ export function testSettingPreferencesFunctionality() {
       await Preference.clickPreferencesSubmenu();
     });
 
-    it("Get current Appearance", async () => {
-      if (await Preference.isLightMode) {
-        console.log("Light Mode is Applied.");
-      } else if (await Preference.isDarkMode) {
-        console.log("Dark Mode is Applied.");
-      } else {
-        console.log("No Preferred Color Scheme Detected.");
-      }
+    it("Verify the default mode", async () => {
+      await Preference.waitForPageLoad(); 
+      expect(await Preference.isLightMode()).toBe(true);
+    });
+
+    it("Verify the default selected theme", async() => {
+      await Preference.waitForPageLoad();
+      expect(await Preference.themeApplied()).toContain("indigo");
+      expect(await Preference.getCurrentTheme()).toBe("Indigo");
     });
 
     it("Select and verify Dark Mode", async () => {
@@ -32,6 +33,13 @@ export function testSettingPreferencesFunctionality() {
       expect(await Preference.isDarkMode()).toBe(false);
     });
 
+    it("Change the theme to Blue and verify", async() => {
+      await browser.pause(3000);
+      await Preference.selectTheme("Blue");
+      await browser.pause(3000);
+      expect(await Preference.themeApplied()).toContain("blue");
+    });
+
     it("Select and verify Light Mode", async () => {
       await Preference.waitForPageLoad();
       await browser.pause(2000);
@@ -40,20 +48,7 @@ export function testSettingPreferencesFunctionality() {
       expect(await Preference.isLightMode()).toBe(true);
     });
 
-    it('Verify the default selected theme', async() => {
-      await Preference.waitForPageLoad();
-      expect(await Preference.themeApplied()).toContain("indigo");
-      expect(await Preference.getCurrentTheme()).toBe("Indigo");
-    });
-
-    it('Change the theme to Blue and verify', async() => {
-      await browser.pause(3000);
-      await Preference.selectTheme("Blue");
-      await browser.pause(3000);
-      expect(await Preference.themeApplied()).toContain("blue");
-    });
-
-    it('Switch to Indigo theme and verify', async() => {
+    it("Switch to Indigo theme and verify", async() => {
       await browser.pause(3000);
       await Preference.selectTheme("Indigo");
       await browser.pause(3000);
