@@ -69,10 +69,11 @@ class Preference extends Page {
   public async selectTheme(themeName: string): Promise<void> {
     const themes = await $$("div.application-theme label span");
     const themeLabels = await $$("div.application-theme label.custom-control-label");
-    for (let i = 0; i < (await themes.length); i++) {
-      const text: string = await themes[i].getText();
+    for (let i = 0; i < (await themeLabels.length); i++) {
+      const text: string = await themeLabels[i].getText();
+      await this.waitForPageLoad();
       if (text.trim() === themeName) {
-        await themeLabels[i].click();
+        await themes[i].click();
         console.log(`Selected theme: "${themeName}"`);
         return;
       }
