@@ -7,6 +7,7 @@
     "@wdio/mocha-framework": "^9.10.1",
     "@wdio/spec-reporter": "^9.10.1",
     "@wdio/visual-service": "^6.3.2",
+    "typescript": "^5.8.2",
     "wdio-html-nice-reporter": "^8.1.7"
   },
   "dependencies": {
