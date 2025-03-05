@@ -23,7 +23,7 @@ export const config: WebdriverIO.Config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.ts'
+        './test/specs/api/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -52,7 +52,6 @@ export const config: WebdriverIO.Config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-        maxInstances: 1,
         browserName: 'chrome',
         'goog:chromeOptions': {
                 args: ['--disable-web-security', '--disable-site-isolation-trials',
@@ -95,7 +94,7 @@ export const config: WebdriverIO.Config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://gitlab.com/api/v4/',
+    //baseUrl: 'https://gitlab.com/api/v4/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
