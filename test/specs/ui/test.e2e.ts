@@ -6,7 +6,7 @@ import { testCreateProjectFunctionality } from './testCreateProject';
 import { testBlankProjectCreationFunctionality } from './testBlankProjectCreation';
 import { testCreateAndSearchLabelFunctionality } from './testLabelCreation';
 import { testSettingPreferencesFunctionality } from './testPreferences';
-import { testConfigureIssueBaordFunctionality } from './testConfigureIssueBoard';
+import {testConfigureIssueBoardFunctionality} from './testConfigureIssueBoard';
 
 /**
  * Executes a series of UI tests for GitLab application.
@@ -35,5 +35,5 @@ testHomePageFunctionality();
 testCreateProjectFunctionality();
 testBlankProjectCreationFunctionality();
 testCreateAndSearchLabelFunctionality();
-testConfigureIssueBaordFunctionality();
+testConfigureIssueBoardFunctionality();
 testSettingPreferencesFunctionality();
